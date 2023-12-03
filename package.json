@@ -1,0 +1,65 @@
+{
+  "name": "ministash",
+  "productName": "MiniStash",
+  "version": "1.0.0",
+  "description": "a video gallery app for your local adult video collection",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "make-mac": "electron-forge make --platform darwin",
+    "make-linux": "electron-forge make --platform linux --targets deb",
+    "make-win": "electron-forge make --platform win32 --targets squirrel"
+  },
+  "author": "taraglo",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.1.0",
+    "@electron-forge/maker-deb": "^7.1.0",
+    "@electron-forge/maker-rpm": "^7.1.0",
+    "@electron-forge/maker-squirrel": "^7.1.0",
+    "@electron-forge/maker-zip": "^7.1.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.1.0",
+    "electron": "^27.1.2"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.1.0",
+    "plyr": "^3.7.8",
+    "squirrel": "^1.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "name": "MiniStash",
+        "icon": "./assets/logo/logo.icns",
+        "executableName": "ministash-v1.0.0",
+        "platform": "darwin",
+        "appBundleId": "com.apple.ministash",
+        "appCategoryType": "public.app-category.video"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "MiniStash"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "icon": "./assets/logo/logo.icns"
+          }
+        }
+      ]
+    }
+  }
+}
